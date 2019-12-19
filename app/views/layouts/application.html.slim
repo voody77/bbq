@@ -21,7 +21,7 @@ html lang='en'
             .nav-link = link_to "Link1", "/path1"
             .nav-link = link_to "Link2", "/path2"
             .nav-link = link_to "Link3", "/path3"
-    .container
+    .container.buffer-both
       .row
         .col-lg-9
           - flash.each do |type, msg|
@@ -39,6 +39,6 @@ html lang='en'
               li = link_to "Link1", "/path1"
               li = link_to "Link2", "/path2"
               li = link_to "Link3", "/path3"
-      .navbar.fixed-bottom.navbar-expand-lg.navbar-dark.bg-light
+      .navbar.fixed-bottom.navbar-expand-lg.navbar-dark.bg-dark
         .footer
-          p Company 2019
+          p.text-white-50 Company 2019
