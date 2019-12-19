@@ -3,12 +3,34 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("fontawesome")
+require("bootstrap")
+
+import "../src/style.scss";
+
+// import $ from 'jquery';
+// import 'bootstrap/dist/js/bootstrap';
+
+// $(document).on('turbolinks:load', function() {
+//     $('body').tooltip({
+//         selector: '[data-toggle="tooltip"]',
+//         container: 'body',
+//     });
+//
+//     $('body').popover({
+//         selector: '[data-toggle="popover"]',
+//         container: 'body',
+//         html: true,
+//         trigger: 'hover',
+//     });
+// });
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

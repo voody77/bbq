@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'slim'
 gem 'uglifier'
+gem 'valid_email2'
+
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'

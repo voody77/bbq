@@ -1,10 +1,44 @@
 doctype html
-html
+html lang='en'
   head
-    title Bbq
+    meta charset='UTF-8'
+    meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    title = content_for?(:title) ? yield(:title) : "Bbq"
     = csrf_meta_tags
     = csp_meta_tag
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    .navbar.sticky-top.navbar-expand-lg.navbar-light.bg-light
+      .container
+        .navbar-brand
+          = link_to "BBQ!", root_path, class: "btn  navbar-brand"
+        .collapse.navbar-collapse
+          .navbar-nav.mr-auto
+            .nav-item
+            .nav-link = link_to "Link1", "/path1"
+            .nav-link = link_to "Link2", "/path2"
+            .nav-link = link_to "Link3", "/path3"
+    .container
+      .row
+        .col-lg-9
+          - flash.each do |type, msg|
+            div class="#{flash_class(type)}" role="alert"
+              = msg
+              button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                span aria-hidden="true" ×
+
+          = yield
+        .col-lg-3
+          .card.card-body.bg-light
+            h3 Sidebar
+            ul.nav.list-group
+              li.nav-header Sidebar
+              li = link_to "Link1", "/path1"
+              li = link_to "Link2", "/path2"
+              li = link_to "Link3", "/path3"
+      .navbar.fixed-bottom.navbar-expand-lg.navbar-dark.bg-light
+        .footer
+          p Company 2019
