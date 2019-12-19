@@ -5,4 +5,5 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255}, uniqueness: true, 'valid_email_2/email': true, on: [
     :create, :update, :edit
   ]
+
 end
