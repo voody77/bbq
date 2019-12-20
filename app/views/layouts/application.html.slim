@@ -11,7 +11,7 @@ html lang='en'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .navbar.sticky-top.navbar-expand-lg.navbar-dark.bg-dark
+    .navbar.sticky-top.navbar-expand-sm.navbar-dark.bg-dark
       .container
         .navbar-brand
           = link_to "BBQ!", root_path, class: 'navbar-brand'
@@ -38,8 +38,6 @@ html lang='en'
 
           = yield
         .col-lg-3
-      footer
-        .navbar.fixed-bottom.navbar-expand-lg.navbar-dark.bg-dark
-          .footer
-            p.text-white-50 © voody77 2019
-            .btn
+      .navbar.fixed-bottom.navbar-collapse.navbar-dark.bg-dark
+        .footer
+          p.text-white-50.text-info.text-left © voody77 2019
