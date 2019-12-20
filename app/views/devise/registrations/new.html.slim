@@ -24,10 +24,10 @@
       .container
         .row.justify-content-center
           .actions.buffer-both
-            = f.submit "Зарегистрироваться", class: 'btn btn-primary'
+            = f.submit "Зарегистрироваться", class: 'btn btn-success'
 
     .card-footer
       .row.justify-content-center
         .col-auto = link_to 'Войти', new_user_session_path, class: 'btn btn-primary justify-content-start'
         '
-        .col-auto = link_to 'Забыли пароль?', new_password_path(resource), class: 'btn btn-danger justify-content-end'
+        .col-auto = link_to 'Забыли пароль?', new_password_path(resource), class: 'btn btn-outline-danger justify-content-end'
