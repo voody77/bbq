@@ -9,6 +9,7 @@ html lang='en'
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .navbar.sticky-top.navbar-expand-sm.navbar-dark.bg-dark
@@ -38,6 +39,7 @@ html lang='en'
 
           = yield
         .col-lg-3
-      .navbar.fixed-bottom.navbar-collapse.navbar-dark.bg-dark
-        .footer
-          p.text-white-50.text-info.text-left © voody77 2019
+      footer
+        .container
+          .modal-footer.bg-dark.fixed-bottom
+            p.text-white-50 © voody77 2019

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
   def edit
   end
 
@@ -22,13 +23,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_current_user
-      @user = current_user
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:name, :email)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_current_user
+    @user = current_user
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:name, :email)
+  end
 end

@@ -1,0 +1,33 @@
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .card style="width: auto; align: center"
+    .card-header
+      h2.card-title.text-center Регистрация
+    .card-body
+      .input-group.flex-wrap.buffer-both
+        .input-group-prepend
+          span.input-group-text
+            i.fas.fa-envelope
+        = f.email_field :email, autofocus: true, placeholder: "Email", aria_label: "Email", class: "form-control form-control-sm"
+      .input-group.flex-wrap.buffer-both
+        .input-group-prepend
+          span.input-group-text
+            i.fas.fa-lock
+        = f.password_field :password, autocomplete: "new-password",
+                  placeholder: "Пароль, #{@minimum_password_length} символов мининум", class: "form-control form-control-sm"
+      .input-group.flex-wrap.buffer-both
+        .input-group-prepend
+          span.input-group-text
+            i.fas.fa-lock
+        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Повторите пароль",
+            class: "form-control form-control-sm"
+      .container
+        .row.justify-content-center
+          .actions.buffer-both
+            = f.submit "Зарегистрироваться", class: 'btn btn-primary'
+
+    .card-footer
+      .row.justify-content-center
+        .col-auto = link_to 'Войти', new_user_session_path, class: 'btn btn-primary justify-content-start'
+        '
+        .col-auto = link_to 'Забыли пароль?', new_password_path(resource), class: 'btn btn-danger justify-content-end'
