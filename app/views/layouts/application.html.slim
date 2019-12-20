@@ -11,16 +11,22 @@ html lang='en'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .navbar.sticky-top.navbar-expand-lg.navbar-light.bg-light
+    .navbar.sticky-top.navbar-expand-lg.navbar-dark.bg-dark
       .container
         .navbar-brand
-          = link_to "BBQ!", root_path, class: "btn  navbar-brand"
+          = link_to "BBQ!", root_path, class: 'navbar-brand'
         .collapse.navbar-collapse
-          .navbar-nav.mr-auto
-            .nav-item
-            .nav-link = link_to "Link1", "/path1"
-            .nav-link = link_to "Link2", "/path2"
-            .nav-link = link_to "Link3", "/path3"
+          ul.navbar-nav.mr-auto
+            - if user_signed_in?
+              .nav-link
+                = link_to 'Профиль', current_user, class: 'text-white'
+              .nav-link
+                = link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'text-white'
+            - else
+              .nav-link
+                = link_to 'Войти', new_user_session_path, class: 'text-white'
+              .nav-link
+                = link_to 'Регистрация', new_user_registration_path, class: 'text-white'
     .container.buffer-both
       .row
         .col-lg-9
@@ -32,13 +38,8 @@ html lang='en'
 
           = yield
         .col-lg-3
-          .card.card-body.bg-light
-            h3 Sidebar
-            ul.nav.list-group
-              li.nav-header Sidebar
-              li = link_to "Link1", "/path1"
-              li = link_to "Link2", "/path2"
-              li = link_to "Link3", "/path3"
-      .navbar.fixed-bottom.navbar-expand-lg.navbar-dark.bg-dark
-        .footer
-          p.text-white-50 Company 2019
+      footer
+        .navbar.fixed-bottom.navbar-expand-lg.navbar-dark.bg-dark
+          .footer
+            p.text-white-50 © voody77 2019
+            .btn

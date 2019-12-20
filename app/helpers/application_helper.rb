@@ -7,4 +7,8 @@ module ApplicationHelper
     when 'alert' then "alert alert-warning alert-dismissible fade show"
     end
   end
+
+  def user_avatar(user)
+    asset_path('user.png')
+  end
 end

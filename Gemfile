@@ -13,6 +13,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'slim'
 gem 'uglifier'
 gem 'valid_email2'
+gem 'devise'
 
 
 group :development, :test do

@@ -1,3 +1,13 @@
 .text-center
   h1 = @user.name
-  p.buffer-top = link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-dark'
+  = image_tag user_avatar(@user)
+  - if @user == current_user
+    p.buffer-top = link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-dark'
+  .row
+    .col-md-12
+      - if @user.events.any?
+        h3 Организовал:
+        .row
+          = render partial: 'events/event', collection: @user.events
+      - else
+        p.buffer-top Пользователь не замечен в организации мероприятий
