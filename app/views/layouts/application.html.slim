@@ -11,7 +11,7 @@ html lang='en'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .navbar.sticky-top.navbar-expand-sm.navbar-dark.bg-dark
+    .navbar.sticky-top.navbar-expand.navbar-dark.bg-dark
       .container
         .navbar-brand
           = link_to "BBQ!", root_path, class: 'navbar-brand'
@@ -29,7 +29,7 @@ html lang='en'
                 = link_to 'Регистрация', new_user_registration_path, class: 'text-white'
     .container.buffer-both
       .row
-        .col-lg-9
+        .col-12.justify-content-center
           - flash.each do |type, msg|
             div class="#{flash_class(type)}" role="alert"
               = msg
@@ -37,7 +37,6 @@ html lang='en'
                 span aria-hidden="true" ×
 
           = yield
-        .col-lg-3
       footer
         .container
           .modal-footer.bg-dark.fixed-bottom
