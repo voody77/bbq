@@ -13,6 +13,5 @@
               = f.check_box :remember_me, class: 'form-check-input'
               = f.label :remember_me, 'Запомнить', class: 'form-check-label', placeholder: 'Запомнить?'
           = f.submit 'Войти', class: 'btn btn-outline-primary btn-block my-1'
-        .card-footer
-          .justify-content-center
-            = render "devise/shared/links"
+        .card-footer.text-center
+          = render "devise/shared/links"

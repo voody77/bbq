@@ -8,6 +8,6 @@
         .card-body
           = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control my-1', placeholder: 'Ваш email'
           .actions
-            = f.submit "Отправить инструкцию на почту?", class: 'btn btn-outline-success btn-block my-1'
-        .card-footer
+            = f.submit "Отправить инструкцию на почту", class: 'btn btn-outline-success btn-block my-1'
+        .card-footer.text-center
           = render "devise/shared/links"
