@@ -1,0 +1,6 @@
+.row.justify-content-center.mt-2
+  .col style="max-width: 25rem;"
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: '' }) do |f|
+      .card
+        .card-header.text-center
+          h4.mb-0 Добро пожаловать!
