@@ -8,6 +8,6 @@
           h3
             = link_to event.title, event_path(event)
           h3.small.text-center
-            = event.datetime
+            = l event.datetime, format: :short
           .buffer-both.text-center
             = event.address
