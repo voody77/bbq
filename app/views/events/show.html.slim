@@ -8,7 +8,7 @@
           .event-description
             h1 = @event.title
             h3 = l @event.datetime, format: :long
-            h3.small = link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}"
+            h3.small = link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}", target: '_blank'
             p = @event.description
           - if current_user_can_edit?(@event)
             .row.
