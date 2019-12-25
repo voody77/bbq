@@ -21,9 +21,16 @@ ru:
       destroyed: 'Событие успешно удалено'
     users:
       updated: 'Профиль успешно обновлен'
+    comments:
+      destroyed: 'Комментарий удален'
+      created: 'Ваш комментарий добавлен'
+      error: 'Ошибка при обработке комментария'
   app:
     name: 'Шашлыки'
     company: 'voody77™'
+  comments:
+    comment:
+      destroy_confirm: 'Вы уверены, что хотите удалить этот комментарий?'
   errors:
     messages:
       already_confirmed: уже подтверждён. Пожалуйста, попробуйте войти в систему
