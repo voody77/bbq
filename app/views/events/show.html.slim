@@ -21,5 +21,15 @@
 .row
   .col-md-8
     .event-comments.buffer-top
+      = render partial: 'comments/form', locals: {comment: @new_comment || @event.comments.build}
       .buffer-both
         = render partial: 'comments/comment', collection: @event.comments
+  .col-md-4
+    .event-owner
+      h4 Зовет:
+      p = render partial: 'users/user', object: @event.user
+    .event-subscriptions
+      h4 Пойдут:
+      p = render(partial: 'subscriptions/subscription', collection: @event.subscriptions)
+    .event-subscription-form
+      h4 Я пойду:
