@@ -15,7 +15,14 @@ class User < ApplicationRecord
 
   before_validation :set_name, on: :create
 
+  after_commit :link_subscriptions, on: :create
+
   private
+
+  def link_subscriptions
+    Subscription.where(user_id: nil, user_email: self.email)
+      .update_all(user_id: self.id)
+  end
 
   # Задаем юзеру случайное имя, если оно пустое
   def set_name

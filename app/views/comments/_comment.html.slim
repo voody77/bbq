@@ -1,18 +1,17 @@
 .buffer-bottom
-  p = comment.body
+  p.text-justify = comment.body
   p
     span
       - if comment.user.present?
-        =' render partial: 'users/user', object: comment.user
+        => render partial: 'users/user', object: comment.user
       - else
         em
           strong
-            =' comment.user_name
+            => comment.user_name
     em
-      =' comment.created_at && l(comment.created_at, format: :short)
+      => l comment.created_at, format: :short
     - if current_user_can_edit?(comment)
-      =' link_to event_comment_path(comment.event, comment), method: :delete,
-              data: {confirm: t('.destroy_confirm')} do
-        span.fas.fa-trash style='color: red'
+      => link_to(fa_icon('trash'), event_comment_path(comment.event, comment),
+            method: :delete, data: {confirm: t('.destroy_confirm')})
 
 

@@ -10,18 +10,21 @@ class Subscription < ApplicationRecord
   validates :user_email, uniqueness: {scope: :event_id}, unless: -> { user.present? }
 
   def user_name
-    if user.present?
-      user.name
-    else
-      super
-    end
+    user.present? ? user.name : super
   end
 
   def user_email
-    if user.present?
-      user.email
-    else
-      super
-    end
+    user.present? ? user.email : super
+  end
+
+
+  private
+
+  def email_used?
+    errors.add(:user_email, I18n.t('errors.messages.subscription.email_used')) if User.where(email: user_email).present?
+  end
+
+  def can_subscribe?
+    errors.add(:user, I18n.t('errors.messages.subscription.cant_subs')) if event.user == user
   end
 end
