@@ -4,5 +4,6 @@ span.subscription
   - else
     em => subscription.user_name
   - if current_user_can_edit?(subscription)
-    => link_to(fa_icon('times'), event_subscription_path(subscription.event, subscription),
-            method: :delete, data: {confirm: t('.destroy_confirm')})
+    => link_to event_subscription_path(subscription.event, subscription),
+            method: :delete, data: {confirm: t('.destroy_confirm')} do
+      span.fas.fa-times style="color: red"
