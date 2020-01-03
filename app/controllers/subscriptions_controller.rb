@@ -6,10 +6,11 @@ class SubscriptionsController < ApplicationController
     @new_subscription = @event.subscriptions.build(subscription_params)
     @new_subscription.user = current_user
 
-    if @new_subscription.save
-      redirect_to @event, notice: t('controllers.subscriptions.created')
+    if @event.user == @new_subscription.user
+      redirect_to @event, alert: t('controllers.subscriptions.error')
     else
-      render 'events/show', alert: t('controllers.subscriptions.error')
+      @new_subscription.save
+      redirect_to @event, notice: t('controllers.subscriptions.created')
     end
   end
 
