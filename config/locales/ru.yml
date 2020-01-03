@@ -57,7 +57,14 @@ ru:
           attributes:
             datetime:
               inclusion: вы не можете создавать события в прошлом
+      messages:
+        subscription:
+          cant_subs: Вы не можете подписаться на это событие
 
+  errors:
+    messages:
+      subscription:
+        cant_subs: Вы не можете подписаться на это событие
 
   controllers:
     events:
