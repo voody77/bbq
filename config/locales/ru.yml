@@ -85,8 +85,8 @@ ru:
 
 
   app:
-    name: Место встречи изменить нельзя
-    company: Абыр Абыр
+    name: BBQ
+    company: voody77
   comments:
     comment:
       destroy_confirm: Вы уверены, что хотите удалить этот комментарий?
