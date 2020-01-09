@@ -5,6 +5,7 @@ class Subscription < ApplicationRecord
   validates :event, presence: true
   validate :can_subscribe?, on: :create, if: -> { user.present?}
   validates :user_name, presence: true, unless: -> { user.present? }
+  validate :email_used?, on: :create, unless: -> { user.present? }
   validates :user_email, presence: true, 'valid_email_2/email': true, unless: -> { user.present? }
 
   validates :user, uniqueness: {scope: :event_id}, if: -> { user.present? }
@@ -22,10 +23,10 @@ class Subscription < ApplicationRecord
   private
 
   def email_used?
-    errors.add(:user_email, I18n.t('errors.messages.subscription.email_used')) if User.where(email: user_email).present?
+    errors.add(:user_email, I18n.t('devise.messages.subscription.email_used')) if User.where(email: user_email).present?
   end
 
   def can_subscribe?
-    errors.add(:user, I18n.t('errors.messages.subscription.cant_subs')) if event.user == user
+    errors.add(:user, I18n.t('devise.messages.subscription.cant_subs')) if event.user == user
   end
 end

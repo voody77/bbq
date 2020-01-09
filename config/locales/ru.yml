@@ -57,14 +57,7 @@ ru:
           attributes:
             datetime:
               inclusion: вы не можете создавать события в прошлом
-      messages:
-        subscription:
-          cant_subs: Вы не можете подписаться на это событие
 
-  errors:
-    messages:
-      subscription:
-        cant_subs: Вы не можете подписаться на это событие
 
   controllers:
     events:
@@ -92,8 +85,8 @@ ru:
 
 
   app:
-    name: BBQ
-    company: voody77
+    name: Место встречи изменить нельзя
+    company: Абыр Абыр
   comments:
     comment:
       destroy_confirm: Вы уверены, что хотите удалить этот комментарий?
