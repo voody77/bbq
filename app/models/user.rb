@@ -13,6 +13,8 @@ class User < ApplicationRecord
     :create, :update, :edit
   ]
 
+  validates_presence_of :avatar
+
   before_validation :set_name, on: :create
 
   after_commit :link_subscriptions, on: :create
