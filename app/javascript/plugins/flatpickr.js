@@ -1,4 +1,5 @@
 import flatpickr from "flatpickr"
+import { Russian } from "flatpickr/dist/l10n/ru"
 require("flatpickr/dist/flatpickr.css")
 
 document.addEventListener("turbolinks:load", () => {
@@ -7,5 +8,7 @@ document.addEventListener("turbolinks:load", () => {
         time_24hr: true,
         dateFormat: "d-m-Y H:i",
         minDate: new Date(),
+        "locale": Russian,
+
     })
 })

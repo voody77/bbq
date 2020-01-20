@@ -9,6 +9,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+import "lightbox2"
+import "lightbox2/dist/css/lightbox.css"
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -22,4 +24,5 @@ import "../stylesheets/application.scss"
 import 'plugins/flatpickr'
 import "@fortawesome/fontawesome-free/js/all"
 import 'plugins/maps'
-import 'lightbox2/dist/js/lightbox-plus-jquery.min'
+// import 'lightbox2/dist/js/lightbox-plus-jquery.min'
+// import 'plugins/lightbox'

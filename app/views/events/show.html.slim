@@ -23,7 +23,7 @@
               div id="map" data-address="#{@event.address}" style="width: 100%; height: 100%;"
       .row
         .col-md-8
-          .event-photo-gallery.d-inline-block
+          .event-photo-gallery
             = render partial: 'photos/photo', collection: @event.photos.except(@new_photo)
           .event-photo-form.buffer-top.pl-3
             = render partial: 'photos/form', locals: {photo: @new_photo || @event.photos.build}
