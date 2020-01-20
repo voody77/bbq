@@ -37,7 +37,7 @@ ru:
         body: Текст
       photo:
         photo: Фотография
-        from: Добавил
+        from: Автор
 
 
     models:
