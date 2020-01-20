@@ -22,3 +22,4 @@ import "../stylesheets/application.scss"
 import 'plugins/flatpickr'
 import "@fortawesome/fontawesome-free/js/all"
 import 'plugins/maps'
+import 'lightbox2/dist/js/lightbox-plus-jquery.min'
