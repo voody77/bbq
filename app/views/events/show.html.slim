@@ -1,42 +1,43 @@
-.event
-  .event-info.row
-    .col-md-12
-      = content_tag 'div', '', class: 'event-background',
-              style: "background-image: url(#{event_photo(@event)})"
-      .event-info-inner.row
-        .col-md-6
-          .event-description
-            h1 = @event.title
-            h3 = l @event.datetime, format: :long
-            h3.small = link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}", target: '_blank'
-            p = @event.description
-          - if current_user_can_edit?(@event)
-            .row
-              p &nbsp &nbsp
-              .buffer-both = link_to 'Изменить', edit_event_path(@event), class: 'btn btn-success btn-block'
-              p &nbsp
-              p &nbsp
-              .buffer-both = link_to 'Удалить', event_path(@event), method: :delete,
-                      data: {confirm: t('devise.registration.events.delete')}, class: 'btn btn-danger btn-block'
-.row
-  .col-md-8
-    .event-photos
-      .event-photo-gallery
-        = render partial: 'photos/photo', collection: @event.photos.except(@new_photo)
-      .event-photo-form
-        = render partial: 'photos/form', locals: {photo: @new_photo || @event.photos.build}
-    .event-comments.buffer-top
-      = render partial: 'comments/form', locals: {comment: @new_comment || @event.comments.build}
-      .buffer-both
-        = render partial: 'comments/comment', collection: @event.comments.except(@new_comment)
-  .col-md-4
-    .event-owner
-      h4 Зовет:
-      p = render partial: 'users/user', object: @event.user
-    .event-subscriptions
-      h4 Пойдут:
-      p = render partial: 'subscriptions/subscription', collection: @event.subscriptions.except(@new_subscription)
-    - unless cant_subscribe
-      .event-subscription-form
-        h4 Я пойду:
-        div = render partial: 'subscriptions/form', locals: {subscription: @new_subscription || @event.subscriptions.build}
+.row.justify-content-center
+  .col-lg
+    .event.container.shadow.shadow-lg.mt-5.center
+      .event-info.row.m-0
+        .col-md-12.mt-2
+          = content_tag 'div', '', class: 'event-background',
+                  style: "background-image: url(#{event_photo(@event)})"
+          .event-info-inner.row
+            .col-md-6
+              .event-description
+                h1 = @event.title
+                h3 = l @event.datetime, format: :long
+                h3.small = link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}", target: '_blank'
+                p = @event.description
+              - if current_user_can_edit?(@event)
+                .row.justify-content-start
+                  p &nbsp &nbsp
+                  p = link_to 'Изменить', edit_event_path(@event), class: 'btn btn-success btn-block'
+                  p &nbsp
+                  p = link_to 'Удалить', event_path(@event), method: :delete,
+                          data: {confirm: t('devise.registration.events.delete')}, class: 'btn btn-danger btn-block'
+            .col-md-6.p-0
+              div id="map" data-address="#{@event.address}" style="width: 100%; height: 100%;"
+      .row
+        .col-md-8
+          .event-photo-gallery.d-inline-block
+            = render partial: 'photos/photo', collection: @event.photos.except(@new_photo)
+          .event-photo-form.buffer-top.pl-3
+            = render partial: 'photos/form', locals: {photo: @new_photo || @event.photos.build}
+          .event-comments.buffer-top.pl-3
+            = render partial: 'comments/form', locals: {comment: @new_comment || @event.comments.build}
+          .buffer-both.pl-3
+            = render partial: 'comments/comment', collection: @event.comments.except(@new_comment)
+        .col-md-4
+          .event-owner
+            h4 Зовет:
+            p = render partial: 'users/user', object: @event.user
+          .event-subscriptions
+            h4 Пойдут:
+            p = render partial: 'subscriptions/subscription', collection: @event.subscriptions.except(@new_subscription)
+          - unless cant_subscribe
+            .event-subscription-form
+              div = render partial: 'subscriptions/form', locals: {subscription: @new_subscription || @event.subscriptions.build}

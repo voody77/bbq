@@ -1,3 +1,7 @@
-.event-photo.buffer-both
-    => link_to image_tag(photo.photo.thumb.url), photo.photo.url
-    = render partial: 'users/user', object: photo.user
+.event-photo.buffer-both.float-left.m-3
+  - from = "#{t('activerecord.attributes.photo.from')}: #{render partial: 'users/user', object: photo.user}"
+  - if current_user_can_edit?(photo)
+    - delete_photo = "#{link_to(fa_icon('trash'), event_photo_path(photo.event, photo),
+            method: :delete, data: {confirm: t('controllers.photos.a_u_shure')})}"
+  = link_to image_tag(photo.photo.thumb.url), photo.photo.url,
+          data: {toggle: 'Lightbox', gallery: 'event-photos-gallery', title: from, footer: delete_photo }

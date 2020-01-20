@@ -1,2 +1,12 @@
-h1 Event#comment
-p = @greeting + ", find me in app/views/event_mailer/comment.html.slim"
+h1 = t '.title'
+p = @comment.body
+p
+  ' #{t '.author'}:
+  strong = @comment.user_name
+hr
+= t '.event'
+h3 = link_to @event.title, event_url(@event)
+= t '.datetime_f'
+h4 = l @event.datetime
+= t '.owner'
+h4 = @event.user.name

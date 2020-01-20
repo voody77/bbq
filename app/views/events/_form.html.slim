@@ -9,10 +9,14 @@
   .form-group
     = f.label :datetime
     p
-      = f.datetime_select :datetime, class: 'form-control'
+      = f.text_field :datetime, class: 'form-control', data: { behavior: "flatpickr" },
+              placeholder: t('activerecord.attributes.event.datetime')
   .form-group
     = f.label :description
     = f.text_area :description, class: 'form-control'
+  .form-group
+    = f.label :pincode
+    = f.text_field :pincode, class: 'form-control'
   .actions
     = f.submit 'Сохранить', class: 'btn btn-primary'
     '

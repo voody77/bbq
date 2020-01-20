@@ -1,3 +1,12 @@
-' Event#subscription
-= "\r\n" * 2
-' #{@greeting + ", find me in app/views/event_mailer/subscription.text.slim"}
+= t '.title'
+| ----
+' #{t '.name'}:
+= @name
+' #{t '.email'}:
+= @email
+|  ---------------------- Событие:
+= @event.title
+' #{t '.datetime_f'}:
+= l @event.datetime
+' #{t '.owner'}:
+= @event.user.name

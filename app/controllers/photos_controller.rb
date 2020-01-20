@@ -6,11 +6,13 @@ class PhotosController < ApplicationController
     @new_photo = @event.photos.build(photo_params)
     @new_photo.user = current_user
 
-      if @new_photo.save
-        redirect_to @event, notice: I18n.t('controllers.photos.created')
-      else
-       render 'events/show', alert: I18n.t('controllers.photos.error')
-      end
+    if @new_photo.save
+      notify_photo(@new_photo)
+      redirect_to @event, notice: I18n.t('controllers.photos.created')
+    else
+      #render 'events/show', alert: I18n.t('controllers.photos.error')
+      redirect_to @event, alert: I18n.t('controllers.photos.error')
+    end
   end
 
   def destroy
@@ -26,16 +28,25 @@ class PhotosController < ApplicationController
   end
 
   private
-    def set_event
-      @event = Event.find(params[:event_id])
-    end
 
-    def set_photo
-      @photo = @event.photos.find(params[:id])
-    end
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def photo_params
-      params.fetch(:photo, {}).permit(:photo)
+  def set_photo
+    @photo = @event.photos.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def photo_params
+    params.fetch(:photo, {}).permit(:photo)
+  end
+
+  def notify_photo(photo)
+    all_emails = (@event.subscriptions.map(&:user_email) + [@event.user.email] - [current_user&.email]).uniq.compact
+
+    all_emails.each do |mail|
+      EventMailer.photo(photo, mail).deliver_now
     end
+  end
 end

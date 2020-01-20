@@ -6,13 +6,15 @@ html lang='en'
     title = content_for?(:title) ? yield(:title) : "Bbq"
     = csrf_meta_tags
     = csp_meta_tag
+    script src="https://api-maps.yandex.ru/2.1?apikey=#{ENV['YANDEX_APIKEY']}&lang=ru_RU"
+      type="text/javascript"
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render 'layouts/navbar'
-    .container.buffer-both
-      .row
-        .col-12.justify-content-center
+    .container
+      .row.justify-content-center
+        .col-lg-9
           - flash.each do |type, msg|
             div class="#{flash_class(type)}" role="alert"
               = msg

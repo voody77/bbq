@@ -1,2 +1,13 @@
-h1 Event#subscription
-p = @greeting + ", find me in app/views/event_mailer/subscription.html.slim"
+h1 = t '.title'
+p
+  ' #{t '.name'}:
+  strong = @name
+p
+  ' #{t '.email'}:
+  strong = link_to @email, "mailto:#{@email}"
+hr = t '.event'
+h3 = @event.title
+= t '.author'
+h4 = l @event.datetime
+= t '.owner'
+h4 = @event.user.name

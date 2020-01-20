@@ -1,0 +1,21 @@
+h1 = t '.title'
+
+= link_to image_tag(@photo.photo.thumb.url), @photo.photo.url
+p
+  ' #{t '.author'}:
+  strong = @photo.user.name
+hr
+
+p
+  ' #{t '.event'}:
+  strong = link_to @event.title, event_url(@event)
+p
+  ' #{t '.owner'}:
+  strong = @event.user.name
+
+p
+  - if @event.datetime < DateTime.current
+    ' #{t '.datetime_p'}:
+  - else
+    ' #{t '.datetime_f'}:
+  strong = l @event.datetime, format: :long
