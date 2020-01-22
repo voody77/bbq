@@ -3,7 +3,7 @@ ymaps.ready(init);
 function init(){
     address = null;
     map = document.getElementById('map');
-    if (map != null) {
+    if (map) {
         address = map.getAttribute('data-address');
         var myMap = new ymaps.Map("map", {
             center: [55.76, 37.64],
