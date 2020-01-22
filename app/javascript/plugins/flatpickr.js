@@ -8,7 +8,7 @@ document.addEventListener("turbolinks:load", () => {
         time_24hr: true,
         dateFormat: "d-m-Y H:i",
         minDate: new Date(),
-        "locale": Russian,
+        locale: Russian,
 
     })
 })
