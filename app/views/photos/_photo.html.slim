@@ -1,6 +1,6 @@
-- from = "#{t('activerecord.attributes.photo.from')}: #{render partial: 'users/user', object: photo.user}"
-- if current_user_can_edit?(photo)
-  - delete_photo = link_to event_photo_path(photo.event, photo),
-          method: :delete, data: {confirm: t('controllers.photos.a_u_shure')} do
-    span.fas.fa-trash style="color: red"
-= link_to image_tag(photo.photo.thumb.url), photo.photo.url, :data => { :lightbox => "image", title: "#{from} #{delete_photo}" }
+/ - from = "#{t('activerecord.attributes.photo.from')}: #{render partial: 'users/user', object: photo.user}"
+/ - if current_user_can_edit?(photo)
+/   - delete_photo = link_to event_photo_path(photo.event, photo),
+/           method: :delete, data: {confirm: t('controllers.photos.a_u_shure')} do
+/     span.fas.fa-trash style="color: red"
+= link_to image_tag(photo.photo.thumb.url), photo.photo.url, :data => { :fancybox => "images" }

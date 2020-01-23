@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", () => {
+$(function() {
     ymaps.ready(init);
 
     function init() {
@@ -33,4 +33,4 @@ document.addEventListener("turbolinks:load", () => {
             }
         );
     }
-});
+})

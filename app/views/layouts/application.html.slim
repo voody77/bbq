@@ -7,8 +7,8 @@ html lang='en'
     = csrf_meta_tags
     = csp_meta_tag
     script type="text/javascript" src="https://api-maps.yandex.ru/2.1?apikey=#{ENV['YANDEX_APIKEY']}&lang=ru_RU"
-    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
   body
     = render 'layouts/navbar'
     .container

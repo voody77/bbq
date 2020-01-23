@@ -2,7 +2,7 @@ import flatpickr from "flatpickr"
 import { Russian } from "flatpickr/dist/l10n/ru"
 require("flatpickr/dist/flatpickr.css")
 
-document.addEventListener("turbolinks:load", () => {
+$(function() {
     flatpickr("[data-behavior='flatpickr']", {
         enableTime: true,
         time_24hr: true,
@@ -10,5 +10,5 @@ document.addEventListener("turbolinks:load", () => {
         minDate: new Date(),
         locale: Russian,
 
-    })
-})
+    });
+});

@@ -5,7 +5,6 @@
 
 
 require("@rails/ujs").start();
-require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 require("jquery");
@@ -23,5 +22,5 @@ import "../stylesheets/application.scss"
 import 'plugins/flatpickr'
 import "@fortawesome/fontawesome-free/js/all"
 import 'plugins/maps'
-import "lightbox2"
-import "lightbox2/dist/css/lightbox.css"
+import '@fancyapps/fancybox'
+import 'plugins/fancybox'
