@@ -13,7 +13,7 @@ class User < ApplicationRecord
     :create, :update, :edit
   ]
 
-  validates_presence_of :avatar, on: [:update, :edit]
+  validates_presence_of :avatar, on: [:edit]
 
   before_validation :set_name, on: :create
 
