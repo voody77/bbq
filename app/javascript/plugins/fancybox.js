@@ -1,6 +1,4 @@
-
-
-window.$ = window.jQuery = require('jquery');
+// window.$ = window.jQuery = require('jquery');
 
 require('@fancyapps/fancybox');
 require('@fancyapps/fancybox/dist/jquery.fancybox.css');
