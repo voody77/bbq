@@ -6,7 +6,7 @@
           = content_tag 'div', '', class: 'event-background',
                   style: "background-image: url(#{event_photo(@event)})"
           .event-info-inner.row
-            .col-md-6
+            .col-md-6.col-12
               .event-description
                 h1 = @event.title
                 h3 = l @event.datetime, format: :long
@@ -20,8 +20,8 @@
                   p &nbsp
                   p = link_to 'Удалить', event_path(@event), method: :delete,
                           data: {confirm: t('devise.registration.events.delete')}, class: 'btn btn-danger btn-block'
-            .col-md-6.p-0
-              div id='map' data-address="#{@event.address}" style="width: 100%; height: 100%;"
+            .col-md-6.col-12.p-0
+              div [id='map' data-address="#{@event.address}" style="width: 100%; height: 100%;"]
       .row
         .col-md-8
           .event-photo-gallery

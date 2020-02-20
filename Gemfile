@@ -18,6 +18,11 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog-aws'
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
+gem 'capistrano-rbenv'
+gem 'capistrano-rbenv-vars'
 
 
 group :production do
