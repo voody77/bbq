@@ -1,16 +1,13 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  # before_action :set_current_user_event, only: [:edit, :update, :destroy]
+  before_action :set_event, except: [:index, :new, :create]
   before_action :password_guard!, only: [:show]
-  after_action :verify_authorized, except: [:index, :new, :create]
 
 
   def index
     @events = policy_scope(Event)
     # authorize @event
   end
-
 
   def show
     @new_comment = @event.comments.build(params[:comment])
@@ -37,7 +34,6 @@ class EventsController < ApplicationController
       render :new
     end
   end
-
 
   def update
 
@@ -78,7 +74,6 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
-    authorize @event
   end
 
   def event_params

@@ -265,3 +265,5 @@ ru:
       owner: Организатор
       datetime_f: Состоится
       datetime_p: Состоялось
+  pundit:
+    not_authorized: Доступ запрещен!
