@@ -23,6 +23,7 @@ gem 'capistrano-rails'
 gem 'capistrano-passenger'
 gem 'capistrano-rbenv'
 gem 'capistrano-rbenv-vars'
+gem 'pundit'
 
 
 group :production do
@@ -34,6 +35,11 @@ group :development, :test do
   gem 'pry-rails'
   gem 'slim-rails'
   gem 'html2slim'
+  gem 'rspec-rails'
+  gem 'pundit-matchers'
+  gem 'factory_bot_rails'
+  gem 'capybara'
+
 end
 
 group :development do

@@ -1,12 +1,14 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_event, only: [:show]
-  before_action :set_current_user_event, only: [:edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  # before_action :set_current_user_event, only: [:edit, :update, :destroy]
   before_action :password_guard!, only: [:show]
+  after_action :verify_authorized, except: [:index, :new, :create]
 
 
   def index
-    @events = Event.all
+    @events = policy_scope(Event)
+    # authorize @event
   end
 
 
@@ -18,6 +20,7 @@ class EventsController < ApplicationController
 
   def new
     @event = current_user.events.build
+    authorize @event
   end
 
   def edit
@@ -26,22 +29,23 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
+    authorize @event
 
-      if @event.save
-        redirect_to @event, notice: I18n.t('controllers.events.created')
-      else
-        render :new
-      end
+    if @event.save
+      redirect_to @event, notice: I18n.t('controllers.events.created')
+    else
+      render :new
+    end
   end
 
 
   def update
 
-      if @event.update(event_params)
-        redirect_to @event, notice: I18n.t('controllers.events.updated')
-      else
-        render :edit
-      end
+    if @event.update(event_params)
+      redirect_to @event, notice: I18n.t('controllers.events.updated')
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -68,12 +72,13 @@ class EventsController < ApplicationController
     end
   end
 
-  def set_current_user_event
-    @event = current_user.events.find(params[:id])
-  end
+  # def set_current_user_event
+  #   @event = current_user.events.find(params[:id])
+  # end
 
   def set_event
     @event = Event.find(params[:id])
+    authorize @event
   end
 
   def event_params
