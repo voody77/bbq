@@ -1,10 +1,18 @@
 class EventPolicy < ApplicationPolicy
+  def create?
+    user.present?
+  end
+
   def destroy?
     update?
   end
 
   def update?
     user_is_owner?(record)
+  end
+
+  def subscribe?
+    !update?
   end
 
   private

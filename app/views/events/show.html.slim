@@ -39,6 +39,6 @@
           .event-subscriptions
             h4 Пойдут:
             p = render partial: 'subscriptions/subscription', collection: @event.subscriptions.except(@new_subscription)
-          - unless cant_subscribe
+          - if policy(@event).subscribe? && !@event.subscribers.include?(current_user)
             .event-subscription-form
               div = render partial: 'subscriptions/form', locals: {subscription: @new_subscription || @event.subscriptions.build}
