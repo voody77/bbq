@@ -12,7 +12,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def subscribe?
-    !update?
+    !update? && create?
   end
 
   private
