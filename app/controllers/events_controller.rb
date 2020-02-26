@@ -2,11 +2,11 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_event, except: [:index, :new, :create]
   before_action :password_guard!, only: [:show]
+  after_action :verify_authorized, only: [:destroy, :update, :edit]
 
 
   def index
     @events = policy_scope(Event)
-    # authorize @event
   end
 
   def show
@@ -17,10 +17,10 @@ class EventsController < ApplicationController
 
   def new
     @event = current_user.events.build
-    authorize @event
   end
 
   def edit
+    authorize @event
   end
 
 
@@ -36,6 +36,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    authorize @event
 
     if @event.update(event_params)
       redirect_to @event, notice: I18n.t('controllers.events.updated')
@@ -45,6 +46,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    authorize @event
     @event.destroy
     redirect_to events_url, notice: I18n.t('controllers.events.destroyed')
   end
