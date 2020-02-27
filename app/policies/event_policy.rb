@@ -12,7 +12,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def subscribe?
-    !update? && create?
+    user.present? && !user_is_owner?(record)
   end
 
   private
