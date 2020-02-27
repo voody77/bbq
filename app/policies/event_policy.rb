@@ -3,6 +3,14 @@ class EventPolicy < ApplicationPolicy
     user.present?
   end
 
+  def index?
+    true
+  end
+
+  def show?
+    true
+  end
+
   def destroy?
     update?
   end
@@ -14,6 +22,7 @@ class EventPolicy < ApplicationPolicy
   def subscribe?
     user.present? && !user_is_owner?(record)
   end
+
 
   private
 
