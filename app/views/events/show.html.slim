@@ -11,7 +11,7 @@
                 h1 = @event.title
                 h3 = l @event.datetime, format: :long
                 h3.small = link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}", target: '_blank'
-                  / a [data-fancybox data-type="iframe" data-src="https://yandex.ru/maps/?text=#{@event.address}" href="javascript:;"]= @event.address
+                / a [data-fancybox data-type="iframe" data-src="https://yandex.ru/maps/?text=#{@event.address}" href="javascript:;"]= @event.address
                 p = @event.description
               - if current_user_can_edit?(@event)
                 .row.justify-content-start
@@ -39,6 +39,6 @@
           .event-subscriptions
             h4 Пойдут:
             p = render partial: 'subscriptions/subscription', collection: @event.subscriptions.except(@new_subscription)
-          - if policy(@event).subscribe?  && !@event.subscribers.include?(current_user)
+          - if policy(@event).subscribe? && !@event.subscribers.include?(current_user)
             .event-subscription-form
               div = render partial: 'subscriptions/form', locals: {subscription: @new_subscription || @event.subscriptions.build}
