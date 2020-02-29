@@ -46,4 +46,11 @@ class ApplicationPolicy
       scope.all
     end
   end
+
+  private
+
+  def user?
+    user.present? && record.user
+  end
+
 end

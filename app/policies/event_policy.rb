@@ -12,22 +12,22 @@ class EventPolicy < ApplicationPolicy
   end
 
   def destroy?
-    update?
+    user_is_owner?
   end
 
   def update?
-    user_is_owner?(record)
+    user_is_owner?
   end
 
   def subscribe?
-    user.present? && !user_is_owner?(record)
+    !(record.subscribers.include?(user) || user_is_owner?)
   end
 
 
   private
 
-  def user_is_owner?(event)
-    user.present? && (event.try(:user) == user)
+  def user_is_owner?
+    user.present? && (record.try(:user) == user)
   end
 
   class Scope < Scope
