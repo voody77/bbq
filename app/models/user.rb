@@ -28,6 +28,10 @@ class User < ApplicationRecord
       .update_all(user_id: self.id)
   end
 
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
   # Задаем юзеру случайное имя, если оно пустое
   def set_name
     self.name = "Товарисч №#{rand(7777)}" if self.name.blank?

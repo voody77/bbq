@@ -23,7 +23,9 @@ gem 'capistrano-rails'
 gem 'capistrano-passenger'
 gem 'capistrano-rbenv'
 gem 'capistrano-rbenv-vars'
+gem 'capistrano-resque'
 gem 'pundit'
+gem 'resque'
 
 
 group :production do
