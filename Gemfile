@@ -18,12 +18,12 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog-aws'
-gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano-passenger'
-gem 'capistrano-rbenv'
-gem 'capistrano-rbenv-vars'
-gem 'capistrano-resque'
+gem 'capistrano', require: false
+gem 'capistrano-rails', require: false
+gem 'capistrano-passenger', require: false
+gem 'capistrano-rbenv', require: false
+gem 'capistrano-rbenv-vars', require: false
+gem 'capistrano-resque', require: false
 gem 'pundit'
 gem 'resque'
 
